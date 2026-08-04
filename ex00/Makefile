@@ -1,6 +1,6 @@
 # ---- Ce que tu adaptes à chaque exercice ----
 NAME    = a.out
-SRCS    = main.cpp
+SRCS    = megaphone.cpp
 # ---------------------------------------------
 
 CXX     = c++
