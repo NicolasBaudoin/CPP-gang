@@ -6,6 +6,22 @@ Point de départ du parcours C++ à 42. Introduction à la **programmation orien
 
 ---
 
+- [C++ — Module 00](#c--module-00)
+	- [Règles générales](#règles-générales)
+		- [Compilation](#compilation)
+		- [Nommage et formatage](#nommage-et-formatage)
+		- [Autorisé / Interdit](#autorisé--interdit)
+		- [Exigences de conception](#exigences-de-conception)
+	- [Exercice 00 — Megaphone](#exercice-00--megaphone)
+	- [Exercice 01 — My Awesome PhoneBook](#exercice-01--my-awesome-phonebook)
+		- [Commandes acceptées : `ADD`, `SEARCH`, `EXIT` (le reste est ignoré)](#commandes-acceptées--add-search-exit-le-reste-est-ignoré)
+	- [Exercice 02 — The Job Of Your Dreams](#exercice-02--the-job-of-your-dreams)
+	- [Rendu et évaluation](#rendu-et-évaluation)
+	- [Rappels de bon sens](#rappels-de-bon-sens)
+- [TUTO](#tuto)
+
+
+
 ## Règles générales
 
 ### Compilation
@@ -136,3 +152,9 @@ Recréer le fichier **`Account.cpp`** disparu, à partir de `Account.hpp`, de `t
 - Les exemples révèlent parfois des exigences non écrites explicitement dans les consignes.
 - N'hésite pas à te documenter sur les concepts théoriques.
 - *By Odin, by Thor! Use your brain!!!*
+
+
+# TUTO
+
+- [CPP Reference](https://en.cppreference.com/Main_Page)
+- [Importants pint CPP 98](https://www.youtube.com/watch?v=78Y_LRZPVRg)
