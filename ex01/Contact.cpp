@@ -3,5 +3,5 @@
 #include <string>
 
 void Contact::setFirstName(std::string value){
-    _firstName = value;
+    firstName = value;
 }
