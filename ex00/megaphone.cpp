@@ -6,7 +6,7 @@ int main(int ac, char **av)
     char **s = av; int j, i = 1;
     
     if (ac == 1)
-      std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+      std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
     
     for (i = 1; s[i]; i++)
         for (j = 0; s[i][j]; j++)
