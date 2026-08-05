@@ -1,13 +1,6 @@
 #include <iostream>
 #include <string>
-
-// bool empty() const;
-
-class phoneBook{
-    private:
-        contact[8];
-};
-
+#include "PhoneBook.hpp"
 
 class contact {
     public :
