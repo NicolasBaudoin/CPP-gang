@@ -9,7 +9,7 @@ class Contact {
         std::string firstName;
 
 
-}
+};
 
 
 #endif
