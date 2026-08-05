@@ -9,6 +9,6 @@ class PhoneBook {
 private :
   Contact _contacts[8];
 
-}
+};
 
 #endif
