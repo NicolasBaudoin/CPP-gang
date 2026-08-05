@@ -161,6 +161,11 @@ Recréer le fichier **`Account.cpp`** disparu, à partir de `Account.hpp`, de `t
 - [Importants pint CPP 98](https://www.youtube.com/watch?v=78Y_LRZPVRg)
 - [SheetCheat CPP](https://www.geeksforgeeks.org/cpp/cpp-cheatsheet/)
 - [Class & object CPP](https://www.geeksforgeeks.org/cpp/c-classes-and-objects/)
+- [Ecapsulation CPP](https://www.geeksforgeeks.org/cpp/encapsulation-in-cpp/)
+- [iomanip for menu](https://www.geeksforgeeks.org/cpp/iomanip-in-cpp/)
 
 ## TOOL
 - [GDB online](https://www.onlinegdb.com/edit/eIQr7ju98x)
+
+## INSPIRATION
+- [Phonebook management style](https://t4tutorials.com/phonebook-management-system-c-project/)
