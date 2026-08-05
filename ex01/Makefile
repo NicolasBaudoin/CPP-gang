@@ -1,12 +1,12 @@
 # ---- Ce que tu adaptes à chaque exercice ----
-NAME    = a.out
-SRCS    = megaphone.cpp
+NAME    = phonebook
+SRCS    = main.cpp Contact.cpp PhoneBook.cpp
 # ---------------------------------------------
 
 CXX     = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-HEADERS = Cat.hpp Dog.hpp
+HEADERS = Contact.hpp PhoneBook.hpp
 
 OBJS    = $(SRCS:.cpp=.o)
 
