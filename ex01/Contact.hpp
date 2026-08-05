@@ -1,3 +1,5 @@
+#include <string>
+
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
