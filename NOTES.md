@@ -1,4 +1,4 @@
-# NOTES — CPP Module 00
+# NOTES — CPP Module 00 (last maj : 05 aout 2026)
 
 Point de situation pour reprendre le fil.
 
