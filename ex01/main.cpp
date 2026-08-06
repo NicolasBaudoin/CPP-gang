@@ -6,10 +6,10 @@
 
 int main()
 {
-    contact contact1;
+    Contact contact1;
 
-    Contact::setFirstName("Nicolas");
-    std::cout << Contact::getFirstName() << std::endl;
+    contact1.setFirstName("Nicolas");
+    std::cout << contact1.getFirstName();
     
     return 0;
 }
