@@ -45,60 +45,57 @@ main.cpp contient ENCORE l'ancien brouillon (une classe `contact` minuscule déf
 - Pas d'OCF exigée avant le Module 02.
 - STL (vector/map/<algorithm>) interdite jusqu'au Module 08.
 
-# RAPPORT — CPP Module 00 (suite)
 
-== Ce qui a avancé depuis hier ==
-- Contact étendu aux 5 champs : firstName, lastName, nickName, phoneNumber, darkestSecret. 
-- Les 5 setters sont écrits et CORRECTS (setFirstName, setLastName, etc.). 
-- Les 5 getters sont écrits (mais buggés, voir plus bas).
-- NOTES.md ajouté au repo. 
-- Makefile toujours bon (NAME = phonebook, SRCS, HEADERS). 
+# RAPPORT — CPP Module 00 (ex01, suite 2)
 
-== État : ex01 NE COMPILE PAS ==
-Deux points conceptuels bloquent. Rien de grave, mais à comprendre.
-
--- 1) Les getters renvoient void au lieu de std::string --
-Dans Contact.hpp (lignes 17-21) et Contact.cpp, tes getters sont déclarés :
- void getFirstName(); // <- void
-...mais leur corps fait `return firstName;`.
-Erreur du compilateur : "return-statement with a value, in function returning 'void'".
-
-Le concept : un GETTER a pour rôle de RENDRE la valeur du champ. Son type de retour doit donc être le TYPE de ce qu'il rend, soit std::string — pas void.
-void = "ne renvoie rien", ce qui contredit un getter.
-À corriger : le type de retour des 5 getters (dans le .hpp ET le .cpp).
-
-Bonus : dans getFirstName, tu as écrit `return firstname;` (minuscule) au lieu de `firstName`. Simple typo -> identifiant inconnu.
-
--- 2) main.cpp : tu confonds "définir" et "appeler" une méthode --
-Ton main fait :
- contact contact1; // (a)
- Contact::setFirstName("Nicolas"); // (b)
- std::cout << Contact::getFirstName(); // (b)
-
-(a) `contact` (minuscule) n'existe pas : ta classe s'appelle Contact (majuscule).
-
-(b) LE point important. Tu appelles les méthodes avec `Contact::`, comme quand tu les DÉFINIS dans le .cpp. Mais :
-- `Contact::setFirstName` (avec ::) sert à DÉFINIR la méthode -> "cette méthode appartient à Contact". C'est ce que tu fais, à juste titre, dans Contact.cpp.
-- Pour APPELER une méthode, il faut un OBJET et l'opérateur point :
+== Ce qui a été corrigé (bravo) ==
+- main.cpp : appel des méthodes CORRIGÉ. 
+ Contact contact1;
  contact1.setFirstName("Nicolas");
  contact1.getFirstName();
- La méthode agit SUR un objet précis. Sans objet, la question "le firstName de QUEL contact ?" n'a pas de réponse -> d'où l'erreur "cannot call member function without object".
+ -> La distinction "définir avec ::" vs "appeler avec ." est intégrée. C'était LE point d'hier.
+- Setters : toujours corrects. 
+- Typo firstName corrigée dans le getter. 
 
-Résumé mental :
- Class::methode(...) => pour DÉFINIR (dans le .cpp)
- objet.methode(...) => pour APPELER (dans le main / ailleurs)
+== Ce qui reste : le type de retour des getters ==
+Deux problèmes se cumulent.
 
-== Reste à faire (rappel, ordre conseillé) ==
-1. Corriger le type de retour des getters (std::string) + la typo firstName.
-2. Corriger le main : `Contact contact1;` puis `contact1.setFirstName(...)` / `contact1.getFirstName()`.
-3. Ajouter une méthode display() à Contact (affichage d'un contact).
-4. PhoneBook : PhoneBook.cpp est encore vide -> logique de stockage, gérer le 9e qui écrase le plus ancien (buffer circulaire, % 8).
-5. Boucle ADD / SEARCH / EXIT dans le main, avec std::getline.
-6. SEARCH : colonnes de 10, alignées à droite, tronquées avec '.', via <iomanip> (setw, right, setfill).
-7. Validation : champ vide interdit -> bloquer à la SAISIE.
+-- 1) Signature .hpp et .cpp qui ne correspondent PAS --
+Tu as changé le retour en char* dans Contact.cpp :
+ char *Contact::getFirstName(){ ... }
+...mais Contact.hpp déclare TOUJOURS :
+ void getFirstName();
+
+Erreur du compilateur : "no declaration matches 'char* Contact::getFirstName()'"
+ note : candidate is 'void Contact::getFirstName()'
+
+Le concept : la DÉCLARATION (.hpp) et la DÉFINITION (.cpp) doivent avoir une signature IDENTIQUE — même nom, mêmes paramètres, ET même type de retour. Si tu changes un côté, tu dois changer l'autre. Là tu n'as modifié que le .cpp.
+
+-- 2) char* n'est pas le bon type --
+Même en alignant les deux fichiers, char* ne marcherait pas :
+ return firstName; // firstName est un std::string
+Un std::string ne se convertit PAS automatiquement en char*.
+Erreur type : "cannot convert std::string to char*".
+
+char* est un réflexe C. En C++, un getter renvoie le TYPE du champ qu'il rend, donc ici : std::string.
+ std::string getFirstName(); // dans le .hpp
+ std::string Contact::getFirstName(){ return firstName; } // dans le .cpp
+
+Conséquence dans main.cpp : tant que le .hpp dit void, `std::cout << contact1.getFirstName();` échoue aussi ("operand types are std::ostream and void" : on ne peut pas afficher void). Une fois le retour passé en std::string, cout l'affiche directement.
+
+== À corriger ==
+1. Type de retour des 5 getters = std::string, dans le .hpp ET le .cpp (les deux doivent être identiques).
+2. Vérifier ensuite que `std::cout << contact1.getFirstName();` compile (ce sera le cas).
+
+== Reste à faire ensuite ==
+3. Ajouter display() à Contact.
+4. PhoneBook : PhoneBook.cpp encore vide -> stockage + 9e qui écrase le plus ancien (buffer circulaire, % 8).
+5. Boucle ADD / SEARCH / EXIT avec std::getline.
+6. SEARCH : colonnes de 10, alignées à droite, tronquées avec '.', via <iomanip>.
+7. Validation champ vide -> à la saisie.
 
 == Bilan ==
-Bonne progression sur Contact (structure + setters nickel). Les deux blocages sont des confusions classiques et FORMATRICES : le type de retour d'un getter, et la différence entre DÉFINIR (::) et APPELER (.) une méthode. Une fois ces deux points intégrés, tu auras un Contact fonctionnel et tu pourras enchaîner sur PhoneBook.
+Tu as passé le cap conceptuel du jour (appel de méthode). Le blocage restant est une leçon utile : déclaration et définition doivent toujours correspondre, et un getter renvoie le type de son champ (std::string), pas char*. Deux petites corrections et Contact sera pleinement fonctionnel -> tu pourras attaquer PhoneBook.
 
 ## Concepts acquis cette session
 
