@@ -37,3 +37,12 @@ std::string Contact::getPhoneNumber(){
 std::string Contact::getDarkestSecret(){
     return darkestSecret;
 }
+
+//  Diplay
+void Contact::display(){
+    std::cout << firstName << std::endl;
+    std::cout << lastName << std::endl;
+    std::cout << nickName << std::endl;
+    std::cout << phoneNumber << std::endl;
+    std::cout << darkestSecret << std::endl;
+} 
