@@ -23,7 +23,7 @@ void Contact::setDarkestSecret(std::string value){
 // Getters
 
 char *Contact::getFirstName(){
-    return firstname;
+    return firstName;
 }
 char *Contact::getLastName(){
     return lastName;
