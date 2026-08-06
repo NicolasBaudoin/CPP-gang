@@ -3,10 +3,13 @@
 
 #include "Contact.hpp"
 
-class PhoneBook {
-private :
-  Contact _contacts[8];
+#define LENGTH_PHONEBOOK 8
 
+class PhoneBook {
+    private :
+      Contact contacts_list[LENGTH_PHONEBOOK];
+      int head;
+      int tail;
 };
 
 #endif
