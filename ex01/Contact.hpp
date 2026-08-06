@@ -14,11 +14,11 @@ class Contact {
       void setDarkestSecret(std::string value);
 
 // Getters
-      void getFirstName();
-      void getLastName();
-      void getNickName();
-      void getPhoneNumber();
-      void getDarkestSecret();
+      std::string getFirstName();
+      std::string getLastName();
+      std::string getNickName();
+      std::string getPhoneNumber();
+      std::string getDarkestSecret();
 
   private:
         std::string firstName;
