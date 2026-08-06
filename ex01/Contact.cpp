@@ -22,18 +22,18 @@ void Contact::setDarkestSecret(std::string value){
 
 // Getters
 
-void Contact::getFirstName(){
+char *Contact::getFirstName(){
     return firstname;
 }
-void Contact::getLastName(){
+char *Contact::getLastName(){
     return lastName;
 }
-void Contact::getNickName(){
+char *Contact::getNickName(){
     return nickName;
 }
-void Contact::getPhoneNumber(){
+char *Contact::getPhoneNumber(){
     return phoneNumber;
 }
-void Contact::getDarkestSecret(){
+char *Contact::getDarkestSecret(){
     return darkestSecret;
 }
