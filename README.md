@@ -175,3 +175,4 @@ Recréer le fichier **`Account.cpp`** disparu, à partir de `Account.hpp`, de `t
 
 ## INSPIRATION
 - [Phonebook management style](https://t4tutorials.com/phonebook-management-system-c-project/)
+- [Circular buffer exemple](https://stackoverflow.com/questions/53942355/trying-to-create-a-circular-buffer-in-c-using-struct)
