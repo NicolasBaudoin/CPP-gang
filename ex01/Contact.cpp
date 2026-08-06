@@ -2,6 +2,8 @@
 #include "Contact.hpp"
 #include <string>
 
+// Setters
+
 void Contact::setFirstName(std::string value){
     firstName = value;
 }
@@ -18,3 +20,20 @@ void Contact::setDarkestSecret(std::string value){
     darkestSecret = value;
 }
 
+// Getters
+
+void Contact::getFirstName(){
+    return firstname;
+}
+void Contact::getLastName(){
+    return lastName;
+}
+void Contact::getNickName(){
+    return nickName;
+}
+void Contact::getPhoneNumber(){
+    return phoneNumber;
+}
+void Contact::getDarkestSecret(){
+    return darkestSecret;
+}
